@@ -65,12 +65,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard flex justify-center flex-col">
-      <Adsense
-      client="ca-pub-9828783530326542"
-      slot="8218139121"
-      style={{"display":"block"}}
-      format='autorelaxed'
-      />
+      
       <h2>Your Daily Tasks</h2>
       <h3>{message}</h3>
       {loading ? <div className='flex w-full justify-center flex-col gap-4 items-center mt-12'>
@@ -93,6 +88,15 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         })}
+      </div>
+      <div className='absolute bottom-0 left-0'>
+        
+      <Adsense
+      client="ca-pub-9828783530326542"
+      slot="6622535161"
+      style={{"display":"inline-block", "width": "360px", "height": "90px"}}
+      format='autorelaxed'
+      />
       </div>
       
     </div>
