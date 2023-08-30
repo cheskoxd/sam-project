@@ -95,7 +95,7 @@ const Dashboard: React.FC = () => {
       client="ca-pub-9828783530326542"
       slot="6622535161"
       style={{"display":"inline-block", "width": "360px", "height": "90px !important"}}
-      format='autorelaxed'
+      // format='autorelaxed'
       />
       </div>
       
