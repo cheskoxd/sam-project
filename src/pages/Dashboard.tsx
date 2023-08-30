@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
       <Adsense
       client="ca-pub-9828783530326542"
       slot="6622535161"
-      style={{"display":"inline-block", "width": "360px", "height": "90px"}}
+      style={{"display":"inline-block", "width": "360px", "height": "90px !important"}}
       format='autorelaxed'
       />
       </div>
