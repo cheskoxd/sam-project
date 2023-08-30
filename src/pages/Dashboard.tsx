@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
           </div>
         })}
       </div>
-      <div className='absolute bottom-0 left-0'>
+      <div className='absolute bottom-0 left-0 w-96 h-24'>
         
       <Adsense
       client="ca-pub-9828783530326542"
