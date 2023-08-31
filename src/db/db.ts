@@ -51,7 +51,12 @@ async function makeRequest<T>(config: AxiosRequestConfig, withToken: boolean = t
     const response: AxiosResponse<T> = await axios(config);
     return response.data;
   } catch (error:any) {
-    throw new Error(error.message || 'API request failed.');
+    console.log(error.response.data);
+    // return error.response.data
+     
+    throw{
+      error: error.response.data,
+    }
   }
 }
 
@@ -120,7 +125,12 @@ async function login(collectionIdOrName: string, identity: string, password: str
     saveTokenToLocalStorage(token, record);
     return response;
   } catch (error:any) {
-    throw new Error(error.response?.data?.error || 'Authentication failed.');
+    console.log(error);
+    
+    throw{
+      error: error.error.message
+    }
+    // return error
   }
 }
 
@@ -146,9 +156,12 @@ export async function authenticate(collectionIdOrName: string, identity: string,
     const parsedToken = JSON.parse(existingToken)
       let {newToken} = await refreshAccessToken(parsedToken.token);
       return newToken
-    } catch (error) {
+    } catch (error:any) {
       // Token refresh failed, log out the user and attempt to authenticate with the password again
       logOut();
+      throw {
+        error: error.response.data
+      }
     }
   }
 
@@ -172,7 +185,7 @@ export async function refreshAccessToken(token: string): Promise<any> {
     saveTokenToLocalStorage(newToken, record);
     return response;
   } catch (error:any) {
-    throw new Error(error.message || 'Token refresh failed.');
+    throw new Error(error.response.data || 'Token refresh failed.');
   }
 }
 

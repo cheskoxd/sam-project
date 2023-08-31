@@ -5,21 +5,32 @@ export interface IStoreModel {
     user: IUser | null,
     feedQuacks: any[],
     discoverQuacks:any[],
-    following: string[],
+    imagesSelected: IImages,
     loading: boolean,
-    followers: IFollowers | null,
+    alert: IAlert,
     // access: IAccess[],
     setUser: Action<this, IUser>,
-    setFollowing: Action<this, string[]>,
+    setImageSelected: Action<this, {id:string, file:any}>,
     setLoading: Action<this, boolean>,
     setFeedQuacks: Action<this, any>,
     setDiscoverQuacks: Action<this, any>,
-    setFollowers: Action<this, IFollowers>,
+    setAlert: Action<this, IAlert>,
     // currentTab: string,
     // sideBarState: boolean,
     // setSideBarState: Action<this, boolean>,
 }
 
+interface IImages {
+    [key: string] : any
+}
+interface IAlert {
+    msg: string, 
+    type: "success" | "confirm" | "error", 
+    value: boolean, 
+    open: boolean, 
+    ableToClose: boolean, 
+    loading: boolean
+}
 // export interface I
 
 export interface IUser extends Record {
@@ -45,13 +56,13 @@ const model: IStoreModel = {
     user:null,
     feedQuacks:[],
     discoverQuacks:[],
-    following:[],
+    imagesSelected:{},
     loading:true,
     setLoading: action((state, payload)=>{
         state.loading = payload
     }),
-    setFollowing: action((state, payload)=>{
-        state.following = payload
+    setImageSelected: action((state, payload) => {
+        state.imagesSelected[payload.id] = payload.file;
     }),
     setUser: action((state, payload) => {
         state.user = payload
@@ -62,9 +73,15 @@ const model: IStoreModel = {
     setDiscoverQuacks: action((state, payload) => {
         state.discoverQuacks = payload
     }),
-    followers:null,
-    setFollowers: action((state, payload) => {
-        state.followers = payload
+    alert:{
+        msg: 'Task Completed!', 
+        open: false, 
+        type: 'success', 
+        value: false, 
+        ableToClose:true, 
+        loading:false},
+    setAlert: action((state, payload) => {
+        state.alert = payload
     }),
     // access: [
     //     {

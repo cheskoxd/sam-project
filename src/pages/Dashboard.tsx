@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import TaskList from '../components/TaskList';
-import { authenticate, getRecords, getTokenFromLocalStorage, refreshAccessToken } from '../db/db';
+import { authenticate, getRecords, getTokenFromLocalStorage, logOut, refreshAccessToken } from '../db/db';
 import { useStoreActions, useStoreState } from '../store/hooks';
 import {Adsense} from '@ctrl/react-adsense';
 
 import gifImage from "../assets/rafsdesign-rafs.gif"
+import { IUser } from '../store/models';
+import { useNavigate } from 'react-router-dom';
 
 interface List {
     id: string,
@@ -22,6 +24,8 @@ const Dashboard: React.FC = () => {
   const [message, setMessage] = useState("")
   const [dailyTasks, setDailyTasks] = useState<List[]>([])
   const [madeTasks, setMadeTasks] = useState<any[]>([])
+
+  const navigate = useNavigate();
 
 //   let dailyTasks:any = []
 
@@ -45,7 +49,7 @@ const Dashboard: React.FC = () => {
     }
 
     function setData(){
-      let token = getTokenFromLocalStorage()
+      let {token} = getTokenFromLocalStorage()
     console.log(token);
 
     
@@ -59,26 +63,41 @@ const Dashboard: React.FC = () => {
     }
     }
 
+  // useEffect(()=>{
+  //   setData()
+  // },[])
+
   useEffect(()=>{
-    setData()
-  },[])
+    setLoading(true)
+    let {token, record} = getTokenFromLocalStorage()
+    if(!token || !record){
+      logOut()
+      navigate('/login')
+    }
+
+    if(record.id){
+          setUser(record as IUser)
+          // setUserId(duck.id)
+          setToken(token)
+          getData(token)
+          return 
+    }
+  }, [])
 
   return (
-    <div className="dashboard flex justify-center flex-col">
-      
-      
+    <div className="dashboard flex justify-center flex-col text-white">
+           
       <h2>Your Daily Tasks</h2>
       <h3>{message}</h3>
       {loading ? <div className='flex w-full justify-center flex-col gap-4 items-center mt-12'>
           <img src={gifImage} alt="GIF Example" className=' w-32 pr-9' />
           <p className='text-sm'>Loading</p>
-        </div> :   
-        !token ? <button onClick={(e)=> {e.preventDefault(); setLoading(true); authenticate("users", "test@test.com", "0123456789").then(()=>setData())}}>Login</button> : <div className='w-full flex justify-center items-center'><TaskList tasks={dailyTasks} /></div>
+        </div> :<div className='w-full flex justify-center items-center'><TaskList tasks={dailyTasks} /></div>
       }
-      <div className='full flex justify-center items-center gap-4 mt-4 flex-col'>
-        {madeTasks.length !== 0 && <h3 className='text-md opacity-50'>Completed tasks</h3>}
+        {madeTasks.length !== 0 && <h3 className='text-md mt-4 opacity-50'>Completed tasks</h3>}
+      <div className=' w-full mt-2 task-list flex justify-center  flex-wrap -mx-1 lg:-mx-4'>
         {madeTasks.length != 0 && madeTasks.map((it: any) => {
-          return <div className='w-11/12 rounded-lg overflow-hidden  mx-2'>
+          return <div className='w-11/12 rounded-lg overflow-hidden md:w-72 m-2 lg:w-60  mx-2'>
             <div className='aspect-square relative'>
               <img className={'object-cover object-center w-full h-full'} src={`https://sam-school-app.pockethost.io/api/files/uploads/` + it.id + "/" + it.proof} alt="" />
               <div className='absolute p-4 top-0 flex justify-start items-start flex-col left-0 w-full h-full bg-grad'>

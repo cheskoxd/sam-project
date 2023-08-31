@@ -16,9 +16,16 @@ interface List {
 const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <div className="mt-2 task-list flex justify-center  flex-wrap -mx-1 lg:-mx-4">
-      {tasks.map((task, index) => (
-        <DailyTask key={index} id={task.id} imageDef={task.image} taskName={task.taskName} taskDescription={task.taskDescription} proofInstructions={task.proofInstructions} />
-      ))}
+      {tasks.map((task, index) => {
+        
+        return <DailyTask 
+        key={index} 
+        id={task.id} 
+        imageDef={task.image} 
+        taskName={task.taskName} 
+        taskDescription={task.taskDescription} 
+        proofInstructions={task.proofInstructions} />
+})}
     </div>
   );
 };

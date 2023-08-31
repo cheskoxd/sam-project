@@ -11,13 +11,17 @@
   "dependencies": {
     "@ctrl/react-adsense": "^1.7.0",
     "@mongez/react-hooks": "^1.3.3",
+    "clsx": "^2.0.0",
     "compressorjs": "^1.2.1",
     "easy-peasy": "^6.0.2",
     "pocketbase": "^0.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.8.2",
+    "react-tsparticles": "^2.12.2",
+    "spinners-react": "^1.0.7",
+    "tsparticles": "^2.12.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

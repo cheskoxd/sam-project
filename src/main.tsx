@@ -5,11 +5,12 @@ import { StoreProvider } from 'easy-peasy'
 
 import App from './App'
 import './index.css'
+import RouterD from './Router'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <StoreProvider store={store}>
-    <App />
+    <RouterD />
     </StoreProvider>
-   </React.StrictMode>,
+  //  </React.StrictMode>,
 )
