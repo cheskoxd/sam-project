@@ -17,15 +17,15 @@ function App() {
     <div className="App bg-dark2 text-white">
       {alert.open &&  <Alert state={alert} setState={setAlert} />}
       <div className=' flex justify-center items-center w-full h-24'>
-      {/* <Adsense
+      <Adsense
         client="ca-pub-9828783530326542"
         slot="6622535161"
         // style={{  "width": "360px", "height": "90px !important" }}
       // format='autorelaxed'
       style={{ width: "360px", height: "90px" }}
       format=""
-      />  */}
-      <Ads dataAdSlot="6622535161" />
+      /> 
+      {/* <Ads dataAdSlot="6622535161" /> */}
       </div>
       <header className="App-header pt-4">
         <h1 className='flex justify-center items-center text-2xl gap-2' >EcoTask App <BiSolidLeaf className='text-green-800' />  </h1>
