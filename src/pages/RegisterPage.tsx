@@ -38,6 +38,11 @@ const RegisterPage = () => {
       const handleSubmit = async (e:any) => {
         e.preventDefault()
         setLoading(true)
+        if(password == "" || verifyPassword == "" || email  == ""){
+          setError('Fill all the inputs');
+          setLoading(false)
+          return
+        }
         if (password === verifyPassword) {
           const data = {
             email: email,
@@ -67,6 +72,7 @@ const RegisterPage = () => {
         } else {
           setError('Passwords do not match');
           setLoading(false)
+          return
 
         }
       };
