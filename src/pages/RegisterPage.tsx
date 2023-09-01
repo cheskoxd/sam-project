@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createAccount, getTokenFromLocalStorage, refreshAccessToken } from '../db/db';
 import { useStoreActions } from '../store/hooks';
+import { BiSolidLeaf } from 'react-icons/bi';
 
 const RegisterPage = () => {
     const navigate = useNavigate();
@@ -36,6 +37,7 @@ const RegisterPage = () => {
 
       const handleSubmit = async (e:any) => {
         e.preventDefault()
+        setLoading(true)
         if (password === verifyPassword) {
           const data = {
             email: email,
@@ -44,7 +46,7 @@ const RegisterPage = () => {
             passwordConfirm: verifyPassword,
           };
 
-          await createAccount('users', data).then((res)=>{
+          await createAccount('eco', data).then((res)=>{
             console.log(res);
             return navigate('/')
           }).catch((e)=>{
@@ -56,12 +58,16 @@ const RegisterPage = () => {
             
             setErrorPassword(e.error.data.password.message || "")
             setErrorEmail(e.error.data.email.message || "")
+            setLoading(false)
+
             return
           })
 
           // Add your logic to submit the data
         } else {
           setError('Passwords do not match');
+          setLoading(false)
+
         }
       };
 
@@ -70,13 +76,11 @@ const RegisterPage = () => {
   return (
       <div className="p-4 w-full h-screen flex flex-col justify-center items-center">
           <div className={clsx({ ['absolute top-0 left-0 flex justify-center items-center z-50 items h-full w-full py-1  border-b radialBorder bg-black opacity-1 transition-opacity duration-500 pointer-events-none ']: true, [" opacity-0 "]: loading == false })} >
-              <img className='w-24 h-24 hover:-rotate-6 animate-pulse' src="/quackerlogo2.png" alt="" />
-          </div>
-  {/* <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"> */}
-             
-      <div className='w-full flex justify-center'>
-        <img className='w-20 h-20  hover:-rotate-6' src="/quackerlogo2.png" alt="" />
+        {/* <img className='w-24 h-24 hover:-rotate-6 animate-pulse' src="/quackerlogo2.png" alt="" /> */}
+        <BiSolidLeaf className='text-green-800 animate-pulse' size={50} />
       </div>
+      {/* <img className='w-20 h-20  hover:-rotate-6' src="/quackerlogo2.png" alt="" /> */}
+      <BiSolidLeaf className='text-green-800 mb-4' size={50} />
       <h2 className="text-2xl font-semibold mb-4">New here?</h2>
       <div>
         {/* <label htmlFor="email">Email:</label> */}

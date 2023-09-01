@@ -170,7 +170,7 @@ export async function authenticate(collectionIdOrName: string, identity: string,
 
 // Function for authenticating with a password or refreshing token if needed
 export async function refreshAccessToken(token: string): Promise<any> {
-  const url = `${baseURL}/api/collections/users/auth-refresh`;
+  const url = `${baseURL}/api/collections/eco/auth-refresh`;
   const config: AxiosRequestConfig = {
     method: 'POST',
     url,

@@ -4,6 +4,7 @@ import { authenticate, getTokenFromLocalStorage, refreshAccessToken } from '../d
 import { useOnce } from '@mongez/react-hooks';
 import { useStoreActions, useStoreState } from '../store/hooks';
 import clsx from 'clsx';
+import { BiSolidLeaf } from 'react-icons/bi';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,11 +18,15 @@ const LoginPage = () => {
   const { setUser } = useStoreActions(actions => actions)
 
   const handleLogin = async () => {
+    setLoading(true)
+
     if (username != '' && password != '' ) {
-      let {token, record}  = await authenticate('users', username, password).catch((e)=>{
+      let {token, record}  = await authenticate('eco', username, password).catch((e)=>{
         console.log(e);
         
         setError(e.error)
+        setLoading(false)
+
         return
       });
       if (token) {
@@ -41,6 +46,8 @@ const LoginPage = () => {
     // })
     } else {
       setError('Invalid username or password');
+      setLoading(false)
+
     }
   };
  
@@ -61,9 +68,11 @@ const LoginPage = () => {
   return (
     <div className="p-4 w-full h-screen flex flex-col justify-center items-center">
       <div className={clsx({ ['absolute top-0 left-0 flex justify-center items-center z-50 items h-full w-full py-1  border-b radialBorder bg-black opacity-1 transition-opacity duration-500 pointer-events-none ']: true, [" opacity-0 "]: loading == false })} >
-        <img className='w-24 h-24 hover:-rotate-6 animate-pulse' src="/quackerlogo2.png" alt="" />
+        {/* <img className='w-24 h-24 hover:-rotate-6 animate-pulse' src="/quackerlogo2.png" alt="" /> */}
+        <BiSolidLeaf className='text-green-800 animate-pulse' size={50} />
       </div>
-      <img className='w-20 h-20  hover:-rotate-6' src="/quackerlogo2.png" alt="" />
+      {/* <img className='w-20 h-20  hover:-rotate-6' src="/quackerlogo2.png" alt="" /> */}
+      <BiSolidLeaf className='text-green-800 mb-4' size={50} />
       <h1 className="text-2xl font-semibold mb-4">Welcome back!</h1>
       <div>
         {/* <label htmlFor="username">Username:</label> */}
