@@ -32,7 +32,7 @@ export const Alert = (props:any) => {
         {props.state.loading ? <SpinnerRoundFilled color='#0174FF' /> :
         
         props.state.type == 'success' ? 
-        <div className={`p-4 border bg-green-500/60 border-white/40 rounded-full mb-2`}>
+        <div className={`p-4 border bg-blue-500/60 border-white/40 rounded-full mb-2`}>
             <FiCheckCircle className="text-2xl" />
         </div> :
         props.state.type == 'confirm' ? 

@@ -10,7 +10,10 @@ import Ads from './components/Ads';
 function App() {
   const { alert, loading } = useStoreState(state => state);
   const { setAlert } = useStoreActions(actions => actions)
-
+  const handleRedirect = () => {
+    // You can specify the path relative to the public folder
+    window.location.href = '/game.html';
+  };
   // const [alert, setAlert] = useState<{msg: string, type: string, value:boolean, open:boolean, ableToClose:boolean, loading:boolean}>({msg: 'Are you sure you want to delete 5 files?', open: false, type: 'success', value: false, ableToClose:false, loading:true})
   
   return ( 
@@ -24,11 +27,15 @@ function App() {
       // format='autorelaxed'
       style={{ width: "360px", height: "90px" }}
       format=""
+      className='bg-white'
       /> 
       {/* <Ads dataAdSlot="6622535161" /> */}
       </div>
       <header className="App-header pt-4">
-        <h1 className='flex justify-center items-center text-2xl gap-2' >EcoTask App <BiSolidLeaf className='text-green-800' />  </h1>
+        <h1 className='flex justify-center items-center text-2xl gap-2' >Granada Green App <BiSolidLeaf className='text-blue-800' />  </h1>
+        <button onClick={handleRedirect}>Play our game here!</button>
+
+        
       </header>
       <main>
         <Dashboard />

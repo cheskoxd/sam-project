@@ -69,10 +69,10 @@ const DailyTask: React.FC<DailyTaskProps> = ({ id,imageDef, taskName, taskDescri
       {!completed ? (
         <>
           {/* {!image ? <input type="file" className='' accept="image/*" onChange={handleImageUpload} /> : */}
-          {imagesSelected && imagesSelected[id] ? <button className='bg-green-600' onClick={handleComplete}>Complete Task</button> :
-          // <button className='bg-green-600' onClick={handleComplete}>Complete Task</button>}
+          {imagesSelected && imagesSelected[id] ? <button className='bg-blue-600' onClick={handleComplete}>Complete Task</button> :
+          // <button className='bg-blue-600' onClick={handleComplete}>Complete Task</button>}
           <div className="flex items-center justify-center w-full">
-            <label htmlFor={"dropzone-file"+id} className="flex flex-col items-center justify-center w-full h-14 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-green-600 dark:hover:bg-bray-800  hover:bg-green-500 ">
+            <label htmlFor={"dropzone-file"+id} className="flex flex-col items-center justify-center w-full h-14 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-blue-600 dark:hover:bg-bray-800  hover:bg-blue-500 ">
               <div className="flex flex-col items-center justify-center">
                 <svg className="w-4 h-4 text-white/50 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
@@ -85,7 +85,7 @@ const DailyTask: React.FC<DailyTaskProps> = ({ id,imageDef, taskName, taskDescri
           </div> }
         </>
       ) : (
-        <p className='text-xs text-green-400'>Task completed! Thank you.</p>
+        <p className='text-xs text-blue-400'>Task completed! Thank you.</p>
       )}
     </div>
   );

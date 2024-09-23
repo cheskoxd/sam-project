@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
         <p>Towp</p>
       </div> */}
         <div className={clsx({ ['absolute top-0 left-0 flex justify-center items-center z-50 items h-full w-full py-1  border-b radialBorder bg-black opacity-1 transition-opacity duration-500 pointer-events-none ']: true, [" opacity-0 "]: loading == false })} >
-          <BiSolidLeaf className='text-green-800 animate-pulse' size={50} />
+          <BiSolidLeaf className='text-blue-800 animate-pulse' size={50} />
         </div>
       {modal && <div className='w-full z-50 h-full bg-dark2 fixed top-0 left-0 flex justify-center flex-col items-center'>
           <div onClick={()=> setModal(false)} className='absolute top-5 left-5 w-6 h-6'>
@@ -190,7 +190,7 @@ const Dashboard: React.FC = () => {
               <img className={'object-cover object-center w-full h-full'} src={`https://sam-school-app.pockethost.io/api/files/uploads/` + it.id + "/" + it.proof} alt="" />
               <div className='absolute p-4 top-0 flex justify-start items-start flex-col left-0 w-full h-full bg-grad'>
                 <p>{it.expand.taskId.taskName}</p>
-                {it.isValid ? <span className='text-xs text-green-500'>Approved</span> :
+                {it.isValid ? <span className='text-xs text-blue-500'>Approved</span> :
                 <span className='text-xs text-red-500'>Waiting for Proof Approval</span> }
               </div>
             </div>
