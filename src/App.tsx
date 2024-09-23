@@ -33,7 +33,7 @@ function App() {
       </div>
       <header className="App-header pt-4">
         <h1 className='flex justify-center items-center text-2xl gap-2' >Granada Green App <BiSolidLeaf className='text-blue-800' />  </h1>
-        <button onClick={handleRedirect}>Play our game here!</button>
+        <button className='bg-blue-800 text-white p-2 rounded-md mt-4 border-white border-2 mb-2' onClick={handleRedirect}>Play our game here!</button>
 
         
       </header>
