@@ -5,7 +5,7 @@ import {BiSolidLeaf} from 'react-icons/bi'
 import { Adsense } from '@ctrl/react-adsense';
 import { Alert } from './components/Alert';
 import { useStoreActions, useStoreState } from './store/hooks';
-import Ads from './components/Ads';
+// import Ads from './components/Ads';
 
 function App() {
   const { alert, loading } = useStoreState(state => state);
