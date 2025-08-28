@@ -45,13 +45,22 @@ function App() {
     </nav> */}
 
     {/* CTA Button */}
-    <button
+    <div>
+      <button
       className="bg-green-500 text-gray-900 px-4 py-2 rounded-lg border-2 border-transparent 
                  hover:border-green-400 hover:bg-gray-900 hover:text-green-400 transition-colors"
       onClick={handleRedirect}
     >
       Play our Game
     </button>
+    <a
+      className="bg-sky-500 text-gray-900 ml-4 px-4 py-2 rounded-lg border-2 border-transparent 
+                 hover:border-sky-400 hover:bg-gray-900 hover:text-sky-400 transition-colors"
+      href='https://mantenetechiva.netlify.app/'
+    >
+      ManteneteChiva
+    </a>
+    </div>
   </div>
 </header>
 
