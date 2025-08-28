@@ -19,7 +19,7 @@ module.exports = {
         'main': '#0174FF',
         'secondary' : '#424243',
         'dark': '#1E1E1E',
-        'dark2' : '#191918'
+        'dark2' : '#111111'
       },
       borderColor: {
         'secondary': '#5C5C5C',

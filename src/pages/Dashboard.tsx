@@ -155,28 +155,69 @@ const Dashboard: React.FC = () => {
         <p>Towp</p>
       </div> */}
         <div className={clsx({ ['absolute top-0 left-0 flex justify-center items-center z-50 items h-full w-full py-1  border-b radialBorder bg-black opacity-1 transition-opacity duration-500 pointer-events-none ']: true, [" opacity-0 "]: loading == false })} >
-          <BiSolidLeaf className='text-blue-800 animate-pulse' size={50} />
+          <BiSolidLeaf className='text-yellow-800 animate-pulse' size={50} />
         </div>
-      {modal && <div className='w-full z-50 h-full bg-dark2 fixed top-0 left-0 flex justify-center flex-col items-center'>
-          <div onClick={()=> setModal(false)} className='absolute top-5 left-5 w-6 h-6'>
-            <FiX size={30} />
-          </div>
-          <h2 className='text-2xl'>Hey {user?.username}</h2>
-          <p className='text-sm opacity-75 mb-6'>Here are your stats</p>
-          
-            <div className='flex justify-center items-center gap-2 flex-col'>
-              <span className='text-md flex flex-row justify-center items-center gap-2'>Tasks completed <span className='text-3xl'>{stats.completed}</span></span>
-              
-              <span className='text-md flex flex-row justify-center items-center gap-2'>Tasks waiting for approval <span className='text-3xl'>{stats.waitingForApproval}</span></span>
-              
-              <div className='text-2xl'>You are on top {stats.top}</div>
-            </div>
+      {modal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+    {/* Modal container */}
+    <div className="relative w-11/12 max-w-md rounded-2xl bg-[#111111] p-8 shadow-lg border border-white/10 animate-fadeIn">
+      
+      {/* Close button */}
+      <button
+        onClick={() => setModal(false)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+      >
+        <FiX size={28} />
+      </button>
 
-            <div onClick={logOf} className='text-sm underline underline-offset-2 mt-12'>Log out</div>
-          
-        </div>}
-      <h3 className='underline underline-offset-2' onClick={openModal}>Hey {user && user?.username}!</h3>
-      <h2>Here are your daily tasks!</h2>
+      {/* Header */}
+      <h2 className="text-2xl font-semibold text-white mb-1">
+        👋 Hey {user?.username}
+      </h2>
+      <p className="text-sm text-gray-400 mb-6">Here are your stats 📊</p>
+
+      {/* Stats */}
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-between items-center bg-gray-800 px-4 py-3 rounded-lg">
+          <span className="text-gray-300">✅ Tasks completed</span>
+          <span className="text-2xl font-bold text-green-400">{stats.completed}</span>
+        </div>
+
+        <div className="flex justify-between items-center bg-gray-800 px-4 py-3 rounded-lg">
+          <span className="text-gray-300">⏳ Waiting for approval</span>
+          <span className="text-2xl font-bold text-yellow-400">{stats.waitingForApproval}</span>
+        </div>
+
+        <div className="flex justify-between items-center bg-gray-800 px-4 py-3 rounded-lg">
+          <span className="text-gray-300">🏆 Leaderboard rank</span>
+          <span className="text-2xl font-bold text-blue-400">Top {stats.top}</span>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <button
+        onClick={logOf}
+        className="mt-8 w-full text-sm text-red-400 hover:text-red-300 underline underline-offset-4 transition-colors"
+      >
+        🚪 Log out
+      </button>
+    </div>
+  </div>
+)}
+    <div className="bg-[#101010]] border border-gray-700 rounded-xl p-4 m-4 shadow-md">
+  {/* Greeting */}
+  <h3
+    onClick={openModal}
+    className="text-lg font-semibold text-green-400 cursor-pointer underline underline-offset-4 hover:text-green-300 transition-colors"
+  >
+    👋 Hey {user?.username || "there"}!
+  </h3>
+
+  {/* Subtitle */}
+  <h2 className="mt-2 text-xl font-bold text-white">
+    📌 Here are your daily tasks!
+  </h2>
+</div>
       {loading ? <div className='flex w-full justify-center flex-col gap-4 items-center mt-12'>
           <img src={gifImage} alt="GIF Example" className=' w-32 pr-9' />
           <p className='text-sm'>Loading</p>

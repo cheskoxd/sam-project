@@ -66,46 +66,67 @@ const LoginPage = () => {
   })
 
   return (
-    <div className="p-4 w-full h-screen flex flex-col justify-center items-center">
-      <div className={clsx({ ['absolute top-0 left-0 flex justify-center items-center z-50 items h-full w-full py-1  border-b radialBorder bg-black opacity-1 transition-opacity duration-500 pointer-events-none ']: true, [" opacity-0 "]: loading == false })} >
-        {/* <img className='w-24 h-24 hover:-rotate-6 animate-pulse' src="/quackerlogo2.png" alt="" /> */}
-        <BiSolidLeaf className='text-blue-800 animate-pulse' size={50} />
-      </div>
-      {/* <img className='w-20 h-20  hover:-rotate-6' src="/quackerlogo2.png" alt="" /> */}
-      <BiSolidLeaf className='text-blue-800 mb-4' size={50} />
-      <h1 className="text-2xl font-semibold mb-4">Welcome back!</h1>
-      <div>
-        {/* <label htmlFor="username">Username:</label> */}
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder='Email'
-          className="w-52 text-sm border rounded px-2 py-1 mt-2 mb-2"
-        />
-      </div>
-      <div>
-        {/* <label htmlFor="password">Password:</label> */}
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder='Password'
-          className="w-52 text-sm border rounded px-2 py-1 mt-2 mb-2"
-        />
-      </div>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      
-      <button onClick={handleLogin} className="w-52 mt-2 relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-        <span className="relative px-5 py-2.5 w-52 transition-all ease-in duration-75 bg-white dark:bg-black rounded-md group-hover:bg-opacity-0">
-          Login
-        </span>
-      </button>
+    <div className="p-4 w-full h-screen flex flex-col justify-center items-center bg-gray-950 text-white">
+  {/* Loader Overlay */}
+  <div
+    className={clsx({
+      ["absolute top-0 left-0 flex justify-center items-center z-50 h-full w-full bg-black bg-opacity-80 backdrop-blur-md transition-opacity duration-500"]:
+        true,
+      ["opacity-0 pointer-events-none"]: loading === false,
+    })}
+  >
+    <BiSolidLeaf className="text-green-400 animate-pulse" size={50} />
+  </div>
 
-      <p className='text-sm mt-4 text-white/50'>Dont have an account? <Link className='font-semibold underline text-white' to={"/register"}>Sign up!</Link></p>
-    </div>
+  {/* Logo */}
+  <BiSolidLeaf className="text-green-400 mb-6 animate-bounce" size={50} />
+
+  {/* Title */}
+  <h1 className="text-2xl font-semibold mb-4">👋 Welcome back!</h1>
+
+  {/* Username */}
+  <input
+    type="text"
+    id="username"
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+    placeholder="📧 Email"
+    className="w-64 text-sm border border-gray-700 bg-gray-800 rounded-md px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+  />
+
+  {/* Password */}
+  <input
+    type="password"
+    id="password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    placeholder="🔒 Password"
+    className="w-64 text-sm border border-gray-700 bg-gray-800 rounded-md px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+  />
+
+  {/* Error */}
+  {error && <p className="text-red-400 text-sm mb-3">{error}</p>}
+
+  {/* Button */}
+  <button
+    onClick={handleLogin}
+    className="w-64 mt-2 relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500 transition-all shadow-lg"
+  >
+    🌱 Login
+  </button>
+
+  {/* Footer */}
+  <p className="text-sm mt-5 text-gray-400">
+    Don’t have an account?{" "}
+    <Link
+      className="font-semibold underline text-green-400 hover:text-green-300"
+      to={"/register"}
+    >
+      Sign up!
+    </Link>
+  </p>
+</div>
+
   );
 };
 
