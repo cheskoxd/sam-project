@@ -109,7 +109,7 @@ const DailyTask: React.FC<DailyTaskProps> = ({ id,imageDef, taskName, taskDescri
                   />
                 </svg>
                 <p className="text-xs text-gray-300">
-                  <span className="font-semibold">Upload proof</span>
+                  <span className="font-semibold">Upload photo</span>
                 </p>
               </div>
               <input
